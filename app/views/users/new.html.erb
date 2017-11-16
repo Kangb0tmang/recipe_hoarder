@@ -1,0 +1,48 @@
+<div class="users-create-page">
+  <h1>Create New User</h1>
+
+  <% if @errors %>
+    <% @errors.each do |error| %>
+      <p><%= error %></p>
+    <% end %>
+  <% end %>
+
+  <div class="row">
+    <%= form_tag '/users', method: 'post', enctype: "multipart/form-data", class: "col s12" do %>
+
+    <div class="row">
+      <div class="input-field col s6">
+        <%= text_field_tag 'first_name' %>
+        <%= label_tag 'first_name', 'First Name' %>
+      </div>
+
+      <div class="input-field col s6">
+        <%= text_field_tag 'last_name' %>
+        <%= label_tag 'last_name', 'Last Name' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <%= email_field_tag 'email' %>
+        <%= label_tag 'email', 'Email' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s6">
+        <%= password_field_tag 'password' %>
+        <%= label_tag 'password', 'Password' %>
+      </div>
+
+      <div class="input-field col s6">
+        <%= password_field_tag 'confirm_password' %>
+        <%= label_tag 'confirm_password', 'Confirm Password' %>
+      </div>      
+    </div>
+
+    <%= button_tag 'Submit', type: 'submit', class: "btn waves-effect waves-light" %>
+
+    <% end %>
+  </div>
+</div>

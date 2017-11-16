@@ -1,0 +1,108 @@
+<div class="create-recipe-page container">
+  <h1>Your very own recipe</h1>
+
+  <div class="row">
+    <%= form_tag '/recipes', method: 'post', enctype: "multipart/form-data", class: 'col s12' do %>
+
+      <ul class="create-recipe-form collapsible col s12" data-collapsible="expandable">
+        <li class="title-section">
+          <div class="collapsible-header active">
+            <i class="tiny material-icons">unfold_more</i>
+            Title
+          </div>
+
+          <div class="collapsible-body">
+            <div class="row">
+              <div class="input-field col s11">
+                <%= text_field_tag 'title' %>
+                <%= label_tag 'title', 'Title' %>
+              </div>
+              <div class="input-field col s11">
+                <%= text_area_tag 'description', nil, class: 'materialize-textarea' %>
+                <%= label_tag 'description', 'Description' %>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="ingredients-section">
+          <div class="collapsible-header">
+            <i class="tiny material-icons">unfold_more</i>
+            Ingredients
+          </div>
+          <div class="collapsible-body">
+            <div class="row">
+              <div class="input-field col s11">
+                <%= text_area_tag 'ingredients', nil, class: 'materialize-textarea' %>
+                <%= label_tag 'ingredients', 'Ingredients' %>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="instructions-section">
+          <div class="collapsible-header">
+            <i class="tiny material-icons">unfold_more</i>
+            Instructions
+          </div>
+          <div class="collapsible-body">
+            <div class="row">
+              <div class="input-field col s11">
+                <%= text_area_tag 'instructions', nil, class: 'materialize-textarea' %>
+                <%= label_tag 'instructions', 'Instructions' %>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="notes">
+          <div class="collapsible-header">
+            <i class="tiny material-icons">unfold_more</i>
+            Notes
+          </div>
+          <div class="collapsible-body">
+            <div class="row">
+              <div class="input-field col s3">
+                <%= text_field_tag 'source' %>
+                <%= label_tag 'source', 'Source' %>
+              </div>
+              <div class="input-field col s8">
+                <%= text_field_tag 'url' %>
+                <%= label_tag 'url', 'Url' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s3">
+                <%= text_field_tag 'yield' %>
+                <%= label_tag 'yield', 'Yield' %>
+              </div>
+              <div class="input-field col s8">
+                <%= text_field_tag 'categories' %>
+                <%= label_tag 'categories', 'Categories' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s11">
+                <%= text_area_tag 'notes', nil, class: 'materialize-textarea' %>
+                <%= label_tag 'notes', 'Notes' %>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <%= button_tag 'Submit', type: 'submit', class: "btn waves-effect waves-light" %>
+    <% end %>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('.create-recipe-form').click(function()
+  {
+    $(this).collapsible({
+      onOpen: function(element) { element.find('.material-icons').text('unfold_less'); },
+      onClose: function(element) { element.find('.material-icons').text('unfold_more'); }
+    });
+  });
+</script>

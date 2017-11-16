@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Recipe Hoarder</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+
+  <body>
+    <header>
+      <nav class="nav-extended">
+        <div class="nav-wrapper">
+          <%= link_to 'Recipe Hoarder', root_path, class: 'brand-logo' %>
+          <ul id="nav-mobile" class="right hand-on-med-and-down">
+            <% if logged_in? %>
+              <li><%= "Hello #{current_user.first_name}" %></li>
+              <li>
+                <%= button_tag 'Log Out', type: 'submit', class: "btn waves-effect waves-light" %>
+                <%= form_tag("/sessions/#{current_user.id}", method: :delete) do %>
+                <% end %>
+              </li>
+            <% else %>
+              <%= link_to 'Log In', sessions_path %>
+            <% end %>
+          </ul>
+        </div>
+        <div class="nav-content">
+          <ul class="tabs tabs-transparent">
+            <li><a href="#">Recipes</a></li>
+            <li><a href="#">Meal Planner</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    </header>
+
+    <%= yield %>
+
+    <footer>
+      <p>&copy; Jon Kang 2017</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<div class="new-session-page">
+
+  <% if @errors %>
+    <% @errors.each do |error| %>
+    <p><%= error %></p>
+    <% end %>
+  <% end %>
+
+  <div class="row">
+    <%= form_tag '/sessions', method: 'post', enctype: "multipart/form-data", class: "col s10" do %>
+
+      <div class="row">
+        <div class="input-field col s6">
+          <%= email_field_tag 'email' %>
+          <%= label_tag 'email', 'Email' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6">
+          <%= password_field_tag 'password' %>
+          <%= label_tag 'password', 'Password' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <%= button_tag 'Submit', type: 'submit', class: "btn waves-effect waves-light" %>
+      </div>
+
+    <% end %>
+  </div>
+
+</div>

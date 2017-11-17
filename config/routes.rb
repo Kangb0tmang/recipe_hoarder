@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :user_tags
   resources :recipes
 
-  # get '/users/:id' => 'pages#account'
   get '/account', to: 'pages#account', as: :current_user
   resources :users
 

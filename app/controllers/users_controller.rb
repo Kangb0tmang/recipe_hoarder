@@ -18,13 +18,4 @@ class UsersController < ApplicationController
       render :new
     end
   end
-
-  def account
-    @user = current_user.id
-  end
-
-  # def show
-  #   @user = current_user
-  #   render :account
-  # end
 end

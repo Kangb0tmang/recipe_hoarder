@@ -17,10 +17,10 @@
           <%= link_to 'Recipe Hoarder', root_path, class: 'brand-logo' %>
           <ul id="nav-mobile" class="right hand-on-med-and-down">
             <% if logged_in? %>
-              <li><%= "Hello #{current_user.first_name}" %></li>
+              <li>Hello <%= current_user.first_name %></li>
               <li>
-                <%= button_tag 'Log Out', type: 'submit', class: "btn waves-effect waves-light" %>
                 <%= form_tag("/sessions/#{current_user.id}", method: :delete) do %>
+                  <%= button_tag 'Log Out', type: 'submit', class: "btn waves-effect waves-light" %>
                 <% end %>
               </li>
             <% else %>
@@ -30,8 +30,8 @@
         </div>
         <div class="nav-content">
           <ul class="tabs tabs-transparent">
-            <li><a href="#">Recipes</a></li>
-            <li><a href="#">Meal Planner</a></li>
+            <li class="tab"><%= link_to 'Recipes', new_recipe_path %></li>
+            <li class="tab"><%= link_to 'Meal Planner', meal_plans_path %></li>
           </ul>
         </div>
       </nav>
